@@ -31,3 +31,11 @@ Không mặc định CGAN tốt hơn ORIGINAL; kết luận theo bảng và kho�
 - File mới lưu riêng ở `OUT/18_HIDE_AND_RECOVER`; cell cuối xuất ZIP. Không xóa ORIGINAL/CGAN/KNN hoặc bảng theo tầng cũ.
 - Mốc trước ẩn có ưu thế RSSI đo thật, được gắn nhãn rõ. Thí nghiệm vẫn là mô phỏng bỏ khảo sát trên dataset đã đo, chưa chứng minh tính đúng vật lý/chi phí ngoài thực địa.
 - Đã chạy kiểm tra phần 18 trên dataset được cung cấp; không đưa dataset, output, checkpoint hoặc bảng số liệu thực nghiệm lên GitHub trong lần cập nhật này.
+
+## Sửa lỗi `KeyError: F1` ở 18B sau khi chạy bản đồ
+
+Một số cell vẽ hình gốc dùng tên `data` làm biến tạm DataFrame, ghi đè dictionary dữ liệu theo tầng. Phần 18B đã chuyển sang nguồn riêng `EXT18_INPUT_DATA`, khôi phục từ `splits` gốc (ghép TRAIN+VALIDATION làm bảng nguồn, TEST giữ nguyên). Không dùng reference tăng cường để tái tạo dữ liệu nguồn. Có kiểm tra schema và thông báo rõ khi thiếu dữ liệu Phase 1.
+
+Mở phiên bản notebook mới nhất và chạy lại 18A rồi 18B. Nếu session vẫn giữ `splits`, không cần chạy lại huấn luyện ở phần cũ. Nếu chưa nạp dữ liệu hoặc session đã reset, chạy phần dữ liệu/WKNN gốc tới index 12 trước.
+
+Đã kiểm tra hồi quy với đúng phép gán biến `data` của cell bản đồ; dữ liệu khôi phục khớp nguồn Phase 1, xử lý nguồn thiếu/sai schema, và chạy lại thí nghiệm 5 seed trên 3 tầng. Bản GitHub vẫn chỉ chứa code; không đăng dữ liệu hoặc output.
