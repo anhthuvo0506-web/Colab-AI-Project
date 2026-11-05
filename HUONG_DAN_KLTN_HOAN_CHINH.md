@@ -2,7 +2,7 @@
 
 [Mở trực tiếp trên Google Colab](https://colab.research.google.com/github/anhthuvo0506-web/Colab-AI-Project/blob/main/KLTN_11-2026_HOAN_CHINH.ipynb)
 
-File: `KLTN_11-2026_HOAN_CHINH.ipynb` (92 cell).
+File: `KLTN_11-2026_HOAN_CHINH.ipynb` (94 cell).
 
 - Giữ nguyên 77 cell gốc; thêm một cell chuẩn bị biến trước 16F-R và phần đánh giá ở cuối.
 - Bổ sung sinh RSSI tại tọa độ mới, so sánh với KNN/APMean trên cùng candidate, metrics/coverage, CI bootstrap theo cụm RP, chẩn đoán RSSI từng AP, bản đồ và xuất Excel/ZIP.
@@ -39,3 +39,15 @@ Một số cell vẽ hình gốc dùng tên `data` làm biến tạm DataFrame, 
 Mở phiên bản notebook mới nhất và chạy lại 18A rồi 18B. Nếu session vẫn giữ `splits`, không cần chạy lại huấn luyện ở phần cũ. Nếu chưa nạp dữ liệu hoặc session đã reset, chạy phần dữ liệu/WKNN gốc tới index 12 trước.
 
 Đã kiểm tra hồi quy với đúng phép gán biến `data` của cell bản đồ; dữ liệu khôi phục khớp nguồn Phase 1, xử lý nguồn thiếu/sai schema, và chạy lại thí nghiệm 5 seed trên 3 tầng. Bản GitHub vẫn chỉ chứa code; không đăng dữ liệu hoặc output.
+
+## Hai cell cuối: dashboard tổng hợp và bản đồ tương tác
+
+Notebook hiện có 94 cell. Hai cell code mới được nối cuối; toàn bộ 92 cell trước giữ nguyên.
+
+- **Cell kế cuối — 19:** đọc kết quả đã xuất từ phần 18, hiển thị bảng tổng hợp theo tầng/phương pháp, kết quả từng seed và query thất bại, kiểm toán split/sinh bù, CI ghép cặp, chẩn đoán RSSI; có 6 biểu đồ tương tác. Xuất dashboard HTML và Excel.
+- **Cell cuối — 20:** bản đồ tọa độ X/Y có bộ chọn tầng, seed, phương pháp; hiển thị OBSERVED, VALIDATION, RP ẩn, reference sinh bù và dự đoán trung bình. Rê chuột/bấm RP để xem tọa độ thật/dự đoán, sai số, query hợp lệ, trạng thái reference và RSSI reference nếu có. Có bảng RP và các chỉ số tổng hợp ngay trong map.
+- Dùng một thang màu sai số chung cho mọi lựa chọn; vector nối tới vị trí dự đoán trung bình không được gọi là sai số trung bình query.
+- Chạy 18B rồi 18C, sau đó hai cell cuối. Nếu file kết quả phần 18 đã có và `EXT18_DIR` vẫn trỏ đúng thư mục, chỉ cần chạy hai cell cuối, không train lại.
+- Xuất riêng vào `OUT/19_FINAL_VIEW`: `19_DASHBOARD_TONG_HOP.html`, `19_BANG_TONG_HOP.xlsx`, `20_MAP_TONG_HOP_TOA_DO.html`, `20_TOA_DO_VA_SAI_SO_RP.csv`; cell cuối tải ZIP tổng hợp trên Colab. HTML nhúng Plotly để mở độc lập mà không tải thư viện từ CDN.
+- Đã kiểm tra số liệu của mọi lựa chọn floor/seed/method khớp kết quả phần 18; thử trực tiếp các bộ chọn, click RP, lớp điểm/vector, bảng và iframe notebook bằng trình duyệt.
+- GitHub chỉ chứa code; không đăng HTML/bảng tọa độ hoặc dữ liệu dẫn xuất. Các file hiển thị được tạo khi chạy notebook với dataset của bạn.
