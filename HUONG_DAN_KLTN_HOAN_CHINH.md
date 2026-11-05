@@ -51,3 +51,12 @@ Notebook hiện có 94 cell. Hai cell code mới được nối cuối; toàn b�
 - Xuất riêng vào `OUT/19_FINAL_VIEW`: `19_DASHBOARD_TONG_HOP.html`, `19_BANG_TONG_HOP.xlsx`, `20_MAP_TONG_HOP_TOA_DO.html`, `20_TOA_DO_VA_SAI_SO_RP.csv`; cell cuối tải ZIP tổng hợp trên Colab. HTML nhúng Plotly để mở độc lập mà không tải thư viện từ CDN.
 - Đã kiểm tra số liệu của mọi lựa chọn floor/seed/method khớp kết quả phần 18; thử trực tiếp các bộ chọn, click RP, lớp điểm/vector, bảng và iframe notebook bằng trình duyệt.
 - GitHub chỉ chứa code; không đăng HTML/bảng tọa độ hoặc dữ liệu dẫn xuất. Các file hiển thị được tạo khi chạy notebook với dataset của bạn.
+
+## Màu sắc các bảng ở cell 19
+
+- CGAN tím, KNN xanh dương, sau ẩn ORIGINAL cam, trước ẩn xám; cột tầng có màu riêng cho F1/F2/F3.
+- Ô sai số có thang xanh → vàng → đỏ từ thấp đến cao trong cùng tầng và seed (nếu có). Giá trị ngang nhau dùng trung tính. Đây là cách đọc số liệu, không tự khẳng định phương pháp tốt hơn có ý nghĩa thống kê.
+- Coverage và tỷ lệ phục hồi càng cao càng xanh; query thất bại/overlap có màu đỏ khi khác 0. Delta dương xanh, âm đỏ; CI chứa 0 vàng, thiếu dữ liệu trung tính.
+- Màu phương pháp là nhãn nhận diện, khác với màu đánh giá các ô chỉ số. Có chú thích ngay trước các bảng.
+- Các bảng được render bằng HTML đã định dạng, hiển thị rõ trên nền sáng/tối. Dashboard HTML và workbook Excel cũng giữ màu; số liệu gốc không thay đổi.
+- Chỉ cần cập nhật và chạy lại cell 19 để xem bảng màu, không huấn luyện lại. Chạy thêm cell 20 nếu muốn tải ZIP có bản HTML/Excel vừa cập nhật.
